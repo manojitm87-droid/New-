@@ -1,0 +1,74 @@
+<!-- ===== ADMIN DASHBOARD ===== -->
+<div class="admin-dashboard" id="adminDashboard">
+    <h2><i class="fas fa-crown"></i> Admin Studio</h2>
+
+    <div class="admin-stats" id="adminStats">
+        <div class="stat"><div class="number" id="statSongs">0</div><div class="label">Total Songs</div></div>
+        <div class="stat"><div class="number" id="statDownloads">0</div><div class="label">Total Downloads</div></div>
+        <div class="stat"><div class="number" id="statCategories">0</div><div class="label">Categories</div></div>
+        <div class="stat"><div class="number" id="statTotalLikes">0</div><div class="label">Total Likes</div></div>
+        <div class="stat"><div class="number" id="statTotalViews">0</div><div class="label">Total Views</div></div>
+    </div>
+
+    <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="tab-add"><i class="fas fa-plus-circle"></i> Add</button>
+        <button class="tab-btn" data-tab="tab-upload"><i class="fab fa-github"></i> Batch</button>
+        <button class="tab-btn" data-tab="tab-manage"><i class="fas fa-list"></i> Manage</button>
+    </div>
+
+    <!-- TAB 1: Add Song -->
+    <div class="admin-tab-content active" id="tab-add">
+        <form class="admin-form" id="uploadForm">
+            <div>
+                <label for="songTitle">Song Title *</label>
+                <input type="text" id="songTitle" placeholder="Enter song title" required />
+            </div>
+            <div>
+                <label for="songArtist">Artist *</label>
+                <input type="text" id="songArtist" placeholder="Artist name" required />
+            </div>
+            <div>
+                <label for="songCategory">Category *</label>
+                <input type="text" id="songCategory" placeholder="e.g. Pop, Rock" required />
+            </div>
+            <div>
+                <label for="songAudioUrl">Audio CDN URL *</label>
+                <input type="url" id="songAudioUrl" placeholder="https://cdn.jsdelivr.net/gh/.../song.mp3" required />
+            </div>
+            <div>
+                <label for="songThumbUrl">Cover CDN URL *</label>
+                <input type="url" id="songThumbUrl" placeholder="https://cdn.jsdelivr.net/gh/.../cover.jpg" required />
+            </div>
+            <div class="full-width">
+                <label for="songLyrics">Lyrics (optional)</label>
+                <textarea id="songLyrics" placeholder="Paste lyrics here..." rows="3"></textarea>
+            </div>
+            <div class="full-width" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                <button type="submit" class="btn btn-primary" id="uploadBtn">
+                    <i class="fas fa-save"></i> Save Song
+                </button>
+                <button type="reset" class="btn" style="background:transparent;">Clear</button>
+            </div>
+            <div class="full-width progress-wrapper" id="uploadProgress">
+                <div class="progress-bar-bg"><div class="progress-bar-fill" id="uploadProgressFill"></div></div>
+                <div class="progress-status"><span id="uploadStatus">Saving...</span><span id="uploadPercent">0%</span></div>
+            </div>
+        </form>
+    </div>
+
+    <!-- TAB 2: GitHub Batch -->
+    <div class="admin-tab-content" id="tab-upload">
+        <div style="background:var(--bg-card); padding:0.8rem 1rem; border-radius:var(--radius-sm); margin-bottom:1rem; border-left:3px solid var(--accent);">
+            <p style="font-size:0.85rem; color:var(--text-secondary);">
+                <i class="fab fa-github" style="color:var(--accent);"></i>
+                <strong>Batch upload multiple songs.</strong> Auto‑fill from filename.
+            </p>
+        </div>
+        <form id="githubBatchForm" class="admin-form">
+            <div>
+                <label for="ghToken">GitHub Token</label>
+                <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx" required />
+            </div>
+        </form>
+    </div>
+</div>
